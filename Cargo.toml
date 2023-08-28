@@ -1,0 +1,19 @@
+[package]
+name = "biosvg"
+version = "0.1.0"
+edition = "2021"
+authors = ["Reverier-Xu <reverier.xu@xdsec.club>"]
+description = "Captcha based on SVG."
+homepage = "https://github.com/XDSEC/biosvg"
+documentation = "https://docs.rs/biosvg"
+repository = "https://github.com/XDSEC/biosvg"
+readme = "README.md"
+license = "MPL-2.0"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+once_cell = "1.18"
+rand = "0.8"
+regex = "1.9"
+thiserror = "1.0"
