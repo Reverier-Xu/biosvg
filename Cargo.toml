@@ -2,11 +2,11 @@
 name = "biosvg"
 version = "0.1.0"
 edition = "2021"
-authors = ["Reverier-Xu <reverier.xu@xdsec.club>"]
+authors = ["Reverier-Xu <reverier.xu@woooo.tech>"]
 description = "Captcha based on SVG."
-homepage = "https://github.com/XDSEC/biosvg"
+homepage = "https://github.com/Reverier-Xu/biosvg"
 documentation = "https://docs.rs/biosvg"
-repository = "https://github.com/XDSEC/biosvg"
+repository = "https://github.com/Reverier-Xu/biosvg"
 readme = "README.md"
 license = "MPL-2.0"
 
