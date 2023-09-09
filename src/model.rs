@@ -221,7 +221,7 @@ impl Path {
             "<path d=\"{}\" stroke=\"{}\" stroke-width=\"{}\" fill=\"none\" />",
             commands.trim(),
             self.color,
-            self.height / 20.0
+            self.height / 12.0
         )
     }
 }
