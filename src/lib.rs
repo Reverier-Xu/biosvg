@@ -81,14 +81,24 @@ impl BiosvgBuilder {
         // split colors
         let mut char_colors = Vec::new();
         let mut line_colors = Vec::new();
-        for color in &self.colors {
-            let give_char = rng.gen_range(0..=1);
-            if give_char == 1 {
-                char_colors.push(color.clone());
+        
+        // randomly split colors in self.colors, but keep the last one gives to the one who have less
+        // colors
+        let mut colors = self.colors.clone();
+        let last_color = colors.pop().unwrap();
+        for color in colors {
+            if rng.gen_bool(0.5) {
+                char_colors.push(color);
             } else {
-                line_colors.push(color.clone());
+                line_colors.push(color);
             }
         }
+        if char_colors.len() > line_colors.len() {
+            line_colors.push(last_color);
+        } else {
+            char_colors.push(last_color);
+        }
+
         let mut font_paths = Vec::new();
         for ch in answer.chars() {
             FONT_PATHS.get(ch.to_string().as_str()).map(|path| {
