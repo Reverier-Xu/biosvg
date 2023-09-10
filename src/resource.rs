@@ -62,9 +62,8 @@ pub static FONT_PATHS: Lazy<HashMap<&'static str, Path>> = Lazy::new(|| {
     m.insert("f", Path::parse("M -162.2 314.9 L 49 314.9 L -65 314.9 L -65 -145.5 L -162.2 -145.5 L 118 -145.5 L -68 -145.5 L -68 -201.5 L -58 -258.5 L -20 -315.5 L 30 -343.5 L 90 -349.5 L 156 -327.5 L 200 -289.5 ").expect("invalid path"));
     m.insert("p", Path::parse("M -244.1 335.5 L -24 335.5 L -150 335.5 L -150 -323.5 L -237.8 -323.5 L -150 -323.5 L -150 -203.5 L -87 -263.5 L 2 -326.5 L 93 -335.5 L 181 -300.5 L 241 -228.5 L 263 -134.5 L 260 -42.5 L 241 32.5 L 194 86.4 L 131 121.1 L 71 133.7 L 21 140 L -143 140 ").expect("invalid path"));
     m.insert("G", Path::parse("M 153 -19.5 L 351 -19.5 L 247 -19.5 L 247 321.1 L 247 214.5 L 188 264.4 L 125 302.3 L 52 324.3 L -14 324.3 L -67 318 L -143 289.6 L -200 236.5 L -259.6 154.5 L -288 37.5 L -291.1 -63.5 L -259.6 -173.5 L -197 -261.5 L -115 -327.5 L -33 -349.5 L 59 -343.5 L 147 -312.5 L 210 -267.5 L 241 -220.5 L 241 -151.5 L 241 -343.5 ").expect("invalid path"));
-    m.insert("i", Path::parse("M -85.2 294.5 L 123 294.5 L 16 294.5 L 16 -172 L -85.2 -172 M 9 -269 L 38 -285 L 38 -310 L 19 -326 L -6 -320 L -16 -295 L -10 -282 L 9 -269 ").expect("invalid path"));
     m
 });
 
 /// all available characters
-pub static FONT_TABLE: &'static str = "23456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnpqrstuvwxyz";
+pub static FONT_TABLE: &'static str = "23456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz";
