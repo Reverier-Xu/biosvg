@@ -1,13 +1,13 @@
 //! Captcha based on SVG.
-//! 
+//!
 //! ## Original idea
-//! 
+//!
 //! [SVG绘制原理与验证码](https://blog.woooo.tech/posts/svg_1/)
-//! 
+//!
 //! ## Usage
-//! 
+//!
 //! `cargo add biosvg`
-//! 
+//!
 //! ```rust
 //! let (answer, svg) = BiosvgBuilder::new()
 //!     .length(4)
@@ -28,8 +28,8 @@
 mod model;
 mod resource;
 use model::Command;
-use rand::seq::SliceRandom;
-use rand::{thread_rng, Rng};
+use rand::seq::{IndexedRandom, SliceRandom};
+use rand::{rng, Rng};
 
 use resource::{FONT_PATHS, FONT_TABLE};
 
@@ -72,22 +72,22 @@ impl BiosvgBuilder {
     pub fn build(self) -> Result<(String, String), model::PathError> {
         // generate random text with length
         let mut answer = String::new();
-        let mut rng = thread_rng();
+        let mut rng = rng();
         for _ in 0..self.length {
-            let index = rng.gen_range(0..FONT_TABLE.len());
+            let index = rng.random_range(0..FONT_TABLE.len());
             answer.push(String::from(FONT_TABLE).chars().nth(index).unwrap());
         }
 
         // split colors
         let mut char_colors = Vec::new();
         let mut line_colors = Vec::new();
-        
+
         // randomly split colors in self.colors, but keep the last one gives to the one who have less
         // colors
         let mut colors = self.colors.clone();
         let last_color = colors.pop().unwrap();
         for color in colors {
-            if rng.gen_bool(0.5) {
+            if rng.random_bool(0.5) {
                 char_colors.push(color);
             } else {
                 line_colors.push(color);
@@ -101,21 +101,21 @@ impl BiosvgBuilder {
 
         let mut font_paths = Vec::new();
         for ch in answer.chars() {
-            FONT_PATHS.get(ch.to_string().as_str()).map(|path| {
-                let random_angle = rng.gen_range(-0.2..0.2 * std::f64::consts::PI);
+            if let Some(path) = FONT_PATHS.get(ch.to_string().as_str()) {
+                let random_angle = rng.random_range(-0.2..0.2 * std::f64::consts::PI);
                 // let random_angle = random_angle + std::f64::consts::PI * 1.0;
-                let random_offset = rng.gen_range(0.0..0.1 * path.width);
+                let random_offset = rng.random_range(0.0..0.1 * path.width);
                 let random_color = char_colors.choose(&mut rng).unwrap();
-                let random_scale_x = rng.gen_range(0.8..1.2);
-                let random_scale_y = rng.gen_range(0.8..1.2);
+                let random_scale_x = rng.random_range(0.8..1.2);
+                let random_scale_y = rng.random_range(0.8..1.2);
                 let path = path
-                    .with_color(&random_color)
+                    .with_color(random_color)
                     .scale(random_scale_x, random_scale_y)
                     .rotate(random_angle)
                     .offset(0.0, random_offset);
 
                 font_paths.push(path.clone())
-            });
+            }
         }
         let mut width = 0.0;
         let mut height = 0.0;
@@ -137,10 +137,10 @@ impl BiosvgBuilder {
             start_point += path.width + height * 0.4 / self.length as f64;
         }
         for _ in 1..self.difficulty {
-            let start_x = rng.gen_range(0.0..width);
-            let end_x = rng.gen_range(start_x..start_x + height);
-            let start_y = rng.gen_range(0.0..height);
-            let end_y = rng.gen_range(start_y..start_y + height);
+            let start_x = rng.random_range(0.0..width);
+            let end_x = rng.random_range(start_x..start_x + height);
+            let start_y = rng.random_range(0.0..height);
+            let end_y = rng.random_range(start_y..start_y + height);
             let color = line_colors.choose(&mut rng).unwrap();
             let start_command = Command {
                 x: start_x,

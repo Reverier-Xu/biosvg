@@ -1,3 +1,5 @@
+use std::fmt::Display;
+
 use rand::Rng;
 use thiserror::Error;
 
@@ -64,10 +66,20 @@ impl Command {
         }
     }
 
-    pub fn to_string(&self) -> String {
+    // pub fn to_string(&self) -> String {
+    //     match self.command_type {
+    //         CommandType::Move => format!("M {} {} ", self.x, self.y),
+    //         CommandType::LineTo => format!("L {} {} ", self.x, self.y),
+    //     }
+    // }
+}
+
+impl Display for Command {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        // write!(f, "{}", self.to_string())
         match self.command_type {
-            CommandType::Move => format!("M {} {} ", self.x, self.y),
-            CommandType::LineTo => format!("L {} {} ", self.x, self.y),
+            CommandType::Move => write!(f, "M {} {} ", self.x, self.y),
+            CommandType::LineTo => write!(f, "L {} {} ", self.x, self.y),
         }
     }
 }
@@ -169,10 +181,10 @@ impl Path {
     }
 
     pub fn random_split(&self) -> Vec<Path> {
-        let mut rng = rand::thread_rng();
+        let mut rng = rand::rng();
         let mut paths = Vec::new();
         let mut commands = Vec::new();
-        let mut break_limit = rng.gen_range(2..=4);
+        let mut break_limit = rng.random_range(2..=4);
         let mut start_cmd = self.commands[0].clone();
         for command in &self.commands {
             if commands.len() >= break_limit || command.command_type == CommandType::Move {
@@ -191,9 +203,9 @@ impl Path {
                 commands = Vec::new();
                 start_cmd = command.clone();
                 start_cmd.command_type = CommandType::Move;
-                break_limit = rng.gen_range(2..=4);
+                break_limit = rng.random_range(2..=4);
             } else {
-                if commands.len() == 0 {
+                if commands.is_empty() {
                     commands.push(start_cmd.clone());
                 }
                 commands.push(command.clone());
@@ -211,13 +223,30 @@ impl Path {
         paths
     }
 
-    pub fn to_string(&self) -> String {
+    // pub fn to_string(&self) -> String {
+    //     let mut commands = String::new();
+    //     for command in &self.commands {
+    //         commands.push_str(&command.to_string());
+    //     }
+    //     // the stroke-width should be calculated by the path size
+    //     format!(
+    //         "<path d=\"{}\" stroke=\"{}\" stroke-width=\"{}\" fill=\"none\" />",
+    //         commands.trim(),
+    //         self.color,
+    //         self.height / 12.0
+    //     )
+    // }
+}
+
+impl Display for Path {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         let mut commands = String::new();
         for command in &self.commands {
             commands.push_str(&command.to_string());
         }
         // the stroke-width should be calculated by the path size
-        format!(
+        write!(
+            f,
             "<path d=\"{}\" stroke=\"{}\" stroke-width=\"{}\" fill=\"none\" />",
             commands.trim(),
             self.color,

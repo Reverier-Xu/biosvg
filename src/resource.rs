@@ -22,7 +22,13 @@ pub static FONT_PATHS: Lazy<HashMap<&'static str, Path>> = Lazy::new(|| {
     m.insert("q", Path::parse("M 71 334 L 282 334 L 178 334 L 178 -325 L 178 -205 L 140 -249 L 90 -290 L 27 -322 L -39 -334 L -102 -318 L -169 -274 L -206.4 -218 L -225.3 -161 L -231.6 -95 L -225.3 -29 L -203.2 31 L -150 91.1 L -74 128.9 L 14 138.4 L 178 138.4 ").expect("invalid path"));
     m.insert("M", Path::parse("M -401.7 313.5 L -206.5 313.5 L -297.5 313.5 L -297.5 -342 L -398.5 -342 L -275.5 -342 L 20.5 307.2 L 322.5 -345 L 439.5 -345 L 335.5 -345 L 335.5 313.5 L 250.5 313.5 L 439.5 313.5 ").expect("invalid path"));
     m.insert("v", Path::parse("M -291.15 -247.5 L -92.85 -247.5 L -193.45 -247.5 L 5.157 219.1 L 210.15 -247.5 L 291.15 -247.5 L 109.15 -247.5 ").expect("invalid path"));
-    m.insert("z", Path::parse("M -168.5 -123.5 L -168.5 -245.5 L 222 -245.5 L -181 214 L 222 214 L 222 87.5 ").expect("invalid path"));
+    m.insert(
+        "z",
+        Path::parse(
+            "M -168.5 -123.5 L -168.5 -245.5 L 222 -245.5 L -181 214 L 222 214 L 222 87.5 ",
+        )
+        .expect("invalid path"),
+    );
     m.insert("P", Path::parse("M -236 312 L -22 312 L -132 312 L -132 -343.5 L -232.9 -343.5 L 117 -343.5 L 167 -333.5 L 218 -305.5 L 255 -267.5 L 277 -210.5 L 277 -138.5 L 265 -59.5 L 230 -2.5 L 177 28.5 L 114 37.5 L -129 37.5 ").expect("invalid path"));
     m.insert("t", Path::parse("M -68 -345 L -68 -150 L -162.1 -150 L 125 -150 L -68 -150 L -68 200 L -55 250.5 L -30 288.3 L 11 313.5 L 52 319.8 L 103 313.5 L 153 291.4 L 181 266.2 ").expect("invalid path"));
     m.insert("4", Path::parse("M -58 -356 L -61 -293 L -71 -217 L -80 -154 L -105 -85 L -137 -19 L -174.8 54 L -241 154 L 263 154 L 156 154 L 156 330.8 L 156 -151 ").expect("invalid path"));
@@ -52,7 +58,13 @@ pub static FONT_PATHS: Lazy<HashMap<&'static str, Path>> = Lazy::new(|| {
     m.insert("K", Path::parse("M -286.7 -343.5 L -88.5 -343.5 L -185.5 -343.5 L -185.5 312 L -283.5 312 L -94.5 312 L -185.5 312 L -185.5 75.5 L 207.5 -343.5 L 296.5 -343.5 L 85.5 -343.5 L 207.5 -343.5 L -47.5 -72.5 L 236.5 312 L 324.5 312 L 125.5 312 ").expect("invalid path"));
     m.insert("N", Path::parse("M -308.5 310.4 L -119.5 310.4 L -207.5 310.4 L -207.5 -342 L -311.7 -342 L -195.5 -342 L 233.5 313.5 L 349.5 313.5 L 248.5 313.5 L 248.5 -345 L 160.5 -345 L 349.5 -345 ").expect("invalid path"));
     m.insert("W", Path::parse("M -483.575 -346.5 L -297.425 -346.5 L -395.425 -346.5 L -190.425 318.1 L -1.425 -346.5 L 190.575 318.1 L 401.575 -343.5 L 303.575 -343.5 L 483.575 -343.5 ").expect("invalid path"));
-    m.insert("Z", Path::parse("M -203 -201.5 L -203 -346.5 L 266 -346.5 L -212.5 311.9 L 251 311.9 L 251 176.5 ").expect("invalid path"));
+    m.insert(
+        "Z",
+        Path::parse(
+            "M -203 -201.5 L -203 -346.5 L 266 -346.5 L -212.5 311.9 L 251 311.9 L 251 176.5 ",
+        )
+        .expect("invalid path"),
+    );
     m.insert("a", Path::parse("M -179.4 -193.5 L -126 -234.5 L -53 -253.5 L 32 -247.5 L 91 -228.5 L 142 -171.5 L 158 -121.5 L 158 95.5 L 117 149.5 L 47 203.1 L -22 228.3 L -113 222 L -182.5 184.2 L -214 133.5 L -214 77.5 L -185.7 17.5 L -113 -26.5 L -28 -36.5 L 158 -36.5 L 158 218.9 L 255 218.9 ").expect("invalid path"));
     m.insert("d", Path::parse("M 72.5 -345 L 185.5 -345 L 185.5 191 L 119.5 250.5 L 62.5 297.8 L -12.5 319.8 L -56.5 316.6 L -145.5 285.1 L -201.7 219 L -233.3 131 L -227 30 L -195.5 -55 L -119.5 -121 L -44.5 -146 L 31.5 -150 L 185.5 -150 L 185.5 313.5 L 280.5 313.5 ").expect("invalid path"));
     m.insert("U", Path::parse("M -327.5 -345 L -138.5 -345 L -223.5 -345 L -223.5 137 L -207.5 187 L -176.5 235 L -129.5 275.7 L -75.5 307.2 L -15.5 319.8 L 53.5 319.8 L 119.5 294.6 L 176.5 256.8 L 220.5 213 L 242.5 165 L 248.5 118 L 248.5 -342 L 154.5 -342 L 349.5 -342 ").expect("invalid path"));
@@ -66,4 +78,4 @@ pub static FONT_PATHS: Lazy<HashMap<&'static str, Path>> = Lazy::new(|| {
 });
 
 /// all available characters
-pub static FONT_TABLE: &'static str = "23456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz";
+pub static FONT_TABLE: &str = "23456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz";
