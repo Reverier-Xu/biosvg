@@ -1,0 +1,10 @@
+unstable_features = true
+imports_granularity = "Crate"
+brace_style = "PreferSameLine"
+wrap_comments = true
+condense_wildcard_suffixes = true
+fn_params_layout = "Compressed"
+hex_literal_case = "Upper"
+group_imports = "StdExternalCrate"
+enum_discrim_align_threshold = 20
+tab_spaces = 2
