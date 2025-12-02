@@ -8,12 +8,12 @@ license       = "MPL-2.0"
 name          = "biosvg"
 readme        = "README.md"
 repository    = "https://github.com/Reverier-Xu/biosvg"
-version       = "0.1.9"
+version       = "0.1.10"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
 once_cell = "1.21"
 rand      = "0.9"
-regex     = "1.11"
+regex     = "1.12"
 thiserror = "2.0"
