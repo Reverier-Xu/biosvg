@@ -8,7 +8,7 @@ license       = "MPL-2.0"
 name          = "biosvg"
 readme        = "README.md"
 repository    = "https://github.com/Reverier-Xu/biosvg"
-version       = "0.1.10"
+version       = "0.1.11"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
