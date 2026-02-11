@@ -1,6 +1,6 @@
 use std::fmt::Display;
 
-use rand::Rng;
+use rand::RngExt;
 use thiserror::Error;
 
 #[derive(Debug, Clone, Copy, PartialEq)]

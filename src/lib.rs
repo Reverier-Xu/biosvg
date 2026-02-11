@@ -31,7 +31,7 @@ use model::Command;
 use rand::{
   rng,
   seq::{IndexedRandom, SliceRandom},
-  Rng,
+  RngExt,
 };
 use resource::{FONT_PATHS, FONT_TABLE};
 
